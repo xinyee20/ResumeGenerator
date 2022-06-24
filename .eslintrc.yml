@@ -1,0 +1,78 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:@typescript-eslint/recommended
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - react
+  - '@typescript-eslint'
+  - prettier
+rules:
+  indent:
+    - off
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - off
+    - always
+  # These rules relate to ES6, also known as ES2015
+  arrow-parens:
+    - error # require parentheses around arrow function arguments
+  arrow-spacing:
+    - error # enforce consistent spacing before and after the arrow in arrow functions
+  generator-star-spacing:
+    - error # enforce consistent spacing around `*` operators in generator functions
+  no-duplicate-imports:
+    - error # disallow duplicate module imports
+  no-useless-computed-key:
+    - error # disallow unnecessary computed property keys in objects and classes
+  no-useless-constructor:
+    - error # disallow unnecessary constructors
+  no-useless-rename:
+    - error # disallow renaming import export and destructured assignments to the same name
+  no-var:
+    - error # require `let` or `const` instead of `var`
+  object-shorthand:
+    - error # require or disallow method and property shorthand syntax for object literals
+  prefer-arrow-callback:
+    - error # require using arrow functions for callbacks
+  prefer-const:
+    - error # require `const` declarations for variables that are never reassigned after declared
+  prefer-rest-params:
+    - error # require rest parameters instead of `arguments`
+  prefer-spread:
+    - error # require spread operators instead of `.apply()`
+  prefer-template:
+    - error # require template literals instead of string concatenation
+  rest-spread-spacing:
+    - error # enforce spacing between rest and spread operators and their expressions
+  template-curly-spacing:
+    - error # require or disallow spacing around embedded expressions of template strings
+  yield-star-spacing:
+    - error # require or disallow spacing around the `*` in `yield*` expressions
+  react/prop-types:
+    - off # want not to show 「’○○’ is missing in props validation」. https://cpoint-lab.co.jp/article/202107/20531/
+  prettier/prettier:
+    - error
+    -
+      printWith: 120
+      tabWidth: 2
+      useTabs: false
+      singleQuote: true
+      trailingComma: 'all'
+      bracketSpacing: true
+      arrowParens: 'always'
+      semi: false 
+      endOfLine: 'auto'

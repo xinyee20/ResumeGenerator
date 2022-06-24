@@ -1,0 +1,53 @@
+{
+  "name": "resume_generator_front",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint --fix src/*.{ts,tsx} && eslint --fix src/**/*.{ts,tsx}",
+    "format": "prettier -w src/*.{ts,tsx} && prettier -w src/**/*.{ts,tsx}",
+    "fix": "npm run format && npm run lint",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.0",
+    "@mui/material": "^5.8.1",
+    "axios": "^0.27.2",
+    "i18next": "^21.8.10",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-i18next": "^11.17.2",
+    "react-markdown": "^8.0.3",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@storybook/addon-actions": "^6.5.6",
+    "@storybook/addon-essentials": "^6.5.6",
+    "@storybook/addon-interactions": "^6.5.6",
+    "@storybook/addon-links": "^6.5.6",
+    "@storybook/builder-vite": "^0.1.35",
+    "@storybook/react": "^6.5.6",
+    "@storybook/testing-library": "^0.0.11",
+    "@types/node": "^17.0.36",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "babel-loader": "^8.2.5",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-storybook": "^0.5.12",
+    "prettier": "^2.6.1",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.9"
+  }
+}
