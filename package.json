@@ -10,7 +10,8 @@
     "format": "prettier -w src/*.{ts,tsx} && prettier -w src/**/*.{ts,tsx}",
     "fix": "npm run format && npm run lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "curl 127.0.0.1:3000"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
