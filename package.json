@@ -11,7 +11,7 @@
     "fix": "npm run format && npm run lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "curl 127.0.0.1:3000"
+    "test": "curl 127.0.0.1:3000 --retry 30 --retry-delay 1 --retry-connrefused"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
