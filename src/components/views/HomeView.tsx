@@ -40,14 +40,8 @@ export const HomeView: FC = memo(() => {
           <SmallComponent /> */}
           <Link to="/form" style={{ textDecoration: 'none', margin: '20px' }}>
             <CustomButton
-              text={'Fill Form'}
+              text={t('form.button.submit')}
               designType="secondary"
-            ></CustomButton>
-          </Link>
-          <Link to="/form" style={{ textDecoration: 'none', margin: '20px' }}>
-            <CustomButton
-              text={'Fill Form'}
-              designType="primary"
             ></CustomButton>
           </Link>
           <CustomButton
