@@ -21,6 +21,9 @@ export default defineConfig(({ command, mode }) => {
       },
       cors: false,
     },
+    build: {
+      chunkSizeWarningLimit: 1600,
+    },
     plugins: [react()],
     resolve: {
       alias: {

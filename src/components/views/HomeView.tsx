@@ -2,6 +2,8 @@ import React, { FC, memo, useState } from 'react'
 import { UnlockedModal } from '../UnlockedModal'
 import { LockedModal } from '../LockedModal'
 import { Card } from '../Card'
+import resumeOne from '../../assets/Resume1.jpg'
+import lockedResume from '../../assets/template.png'
 
 export const HomeView: FC = memo(() => {
   const [selectedTemplate, setSelectedTemplate] = useState('')
@@ -26,14 +28,14 @@ export const HomeView: FC = memo(() => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          padding: '30px',
-          paddingTop: '80px',
+          padding: '40px',
+          paddingTop: '100px',
         }}
       >
         <h1>トランス・レジュメ</h1>
-        <h4>
+        <h5>
           英文履歴書が必要だけど、どう書けばいいかわからない？ぜひお試しください。
-        </h4>
+        </h5>
       </div>
 
       <div
@@ -45,17 +47,17 @@ export const HomeView: FC = memo(() => {
         }}
       >
         <Card
-          template="src/assets/Resume1.png"
+          template={resumeOne}
           onClick={() => {
             setUnlockedModalOpen(true)
-            setSelectedTemplate('src/assets/Resume1.png')
+            setSelectedTemplate(resumeOne)
           }}
         ></Card>
         <Card
-          template="src/assets/template.png"
+          template={lockedResume}
           onClick={() => {
             setLockedModalOpen(true)
-            setSelectedTemplate('src/assets/template.png')
+            setSelectedTemplate(lockedResume)
           }}
         ></Card>
       </div>
