@@ -157,6 +157,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('summary', { required: 'あなたの強みは必須です' })}
+            value={sessionStorage.getItem('summary')}
           />
           <ErrorMessage
             errors={errors}

@@ -44,7 +44,7 @@ export const ResumeForm4 = () => {
     data.questions.map((d) => {
       answers.push(d.questionText.replace(/\r?\n/g, '\\n'))
     })
-    sessionStorage.setItem('workHistories', answers.join(','))
+    sessionStorage.setItem('education', answers.join(','))
     navigate('/confirm', { replace: true })
   }
 
