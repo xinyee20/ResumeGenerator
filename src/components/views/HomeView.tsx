@@ -34,7 +34,7 @@ export const HomeView: FC = memo(() => {
         </button>
       </div>
 
-      <div className="card" style={{ margin: '5em' }}>
+      <div className="card" style={{ margin: '2em 5em' }}>
         <div className="card-body">
           <h2 className="card-title">{t('header.title')}</h2>
           {/* <SmallComponent />
