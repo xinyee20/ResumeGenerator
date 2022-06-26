@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { TextField, Button, Container } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import LoadingOverlay from 'react-loading-overlay'
 
 type IFormInput = {
   firstName: string
@@ -21,14 +20,6 @@ type IFormInput = {
 export const Confirm: FC = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data)
-  }
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -47,26 +38,20 @@ export const Confirm: FC = () => {
     ?.replace(/\r?\\n/g, '\n')
 
   const translate = () => {
+    setIsLoading(true)
     // Call translate API
   }
 
   return (
     <>
       {isLoading ? (
-        <LoadingOverlay
-          active={true}
-          // spinner={<BounceLoader />}
-          spinner={true}
-          text="Loading your content..."
-        >
-          {/* <p>Some content or children or something.</p> */}
-        </LoadingOverlay>
+        <p>Loading</p>
       ) : (
         <>
           <Container maxWidth="sm" style={{ paddingBottom: 30 }}>
             <h1>確認画面</h1>
           </Container>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form>
             <Container maxWidth="sm" style={{ paddingBottom: 30 }}>
               {t('form.inputs.firstName')}
               <h4>{firstName}</h4>
