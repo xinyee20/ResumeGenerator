@@ -26,6 +26,7 @@ export const Card: FC<CardProps> = memo(({ template, onClick }) => {
 
           borderRadius: '20px',
         }}
+        alt="Template"
       ></img>
     </div>
   )

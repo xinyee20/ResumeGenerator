@@ -42,7 +42,13 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
             flexDirection: 'column',
           }}
         >
-          <div style={{ padding: '30px 0' }}>
+          <div
+            style={{
+              paddingTop: '50px',
+              paddingBottom: '30px',
+              fontWeight: '700',
+            }}
+          >
             {firstName} {lastName}
           </div>
           <div style={{ paddingBottom: '10px' }}>
