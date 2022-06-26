@@ -6,34 +6,75 @@ import AddIcon from '@mui/icons-material/Add'
 import { WorkHistory } from '@/types/WorkHistroy'
 import { Education } from '@/types/Education'
 import { ReactElement } from 'react-markdown/lib/react-markdown'
+import { QuestionItem } from '../QuestionItem'
 
-interface IFormInput {
-  skills: string[]
-  workhistory: WorkHistory[]
-  education: Education[]
+interface Question {
+  questionText: string
 }
 
-export const ResumeForm2: FC = () => {
-  const { t } = useTranslation()
-  const { register, handleSubmit } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data)
+export interface QuestionForm {
+  skills: Question[]
+}
+
+export const ResumeForm2 = () => {
+  const { handleSubmit, register, control } = useForm<QuestionForm>({
+    defaultValues: {
+      questions: [{ questionText: '' }],
+    },
+  })
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'questions',
+  })
+
+  const addQuestion = () => {
+    append({ questionText: '' })
+  }
+
+  const removeQuestion = (index: number) => {
+    remove(index)
+  }
+
+  const doSubmit = (data: QuestionForm) => {
+    console.log('data', data)
+    const answers: string[] = []
+    data.questions.map((d) => {
+      answers.push(d.questionText)
+    })
+    sessionStorage.setItem('skills', answers.join(','))
   }
 
   return (
-    <>
-      <Container maxWidth="sm" style={{ paddingBottom: 30 }}>
-        <h1>{t('form.title')}</h1>
-        <p>{t('form.desc')}</p>
+    <div className={'container'}>
+      <Container maxWidth="sm" style={{ paddingBottom: 20 }}>
+        <form onSubmit={handleSubmit(doSubmit)} className={'form-container'}>
+          {fields.map((field, index) => (
+            <QuestionItem
+              key={field.id}
+              register={register}
+              questionIndex={index}
+              removeQuestion={removeQuestion}
+            />
+          ))}
+          <div style={{ marginBottom: 10 }}>
+            <Button
+              onClick={addQuestion}
+              type={'button'}
+              variant="contained"
+              startIcon={<AddIcon />}
+            >
+              質問を追加
+            </Button>
+          </div>
+          <div className={'form-action-wrapper'}>
+            <Button type="submit" variant="contained">
+              保存
+            </Button>
+          </div>
+        </form>
       </Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Container maxWidth="sm" style={{ marginBottom: 30 }}>
-          <Button variant="contained" type="submit">
-            {t('form.button.submit')}
-          </Button>
-        </Container>
-      </form>
-    </>
+    </div>
   )
 }
 

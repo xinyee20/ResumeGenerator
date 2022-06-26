@@ -9,7 +9,7 @@ type IFormInput = {
   firstName: string
   lastName: string
   address: string
-  phoneNumber: number
+  phoneNumber: string
   email: string
   summary: string
 }
@@ -23,6 +23,10 @@ export const ResumeForm: FC = () => {
     formState: { errors },
   } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    Object.keys(data).map((key) => {
+      const value: string = data[key as keyof IFormInput] as string
+      sessionStorage.setItem(key, value)
+    })
     navigate('/form2', { replace: true })
   }
 
