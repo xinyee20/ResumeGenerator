@@ -14,17 +14,19 @@ export const ResumeView: FC = memo(() => {
   const phoneNumber = sessionStorage.getItem('phoneNumber')
   const email = sessionStorage.getItem('email')
   const summary = sessionStorage.getItem('summary')
-  const skills = sessionStorage.getItem('skills')
+  const skills = sessionStorage.getItem('skills') as string
   const workHistories = sessionStorage
     .getItem('workHistories')
-    ?.replace(/\r?\\n/g, '\n')
+    ?.replace(/\r?\\n/g, '\n') as string
   const education = sessionStorage
     .getItem('education')
-    ?.replace(/\r?\\n/g, '\n')
+    ?.replace(/\r?\\n/g, '\n') as string
 
   const createPDF = async () => {
     const pdf = new jsPDF('portrait', 'pt', 'a4')
-    const data = await html2canvas(document.querySelector('#pdf'))
+    const data = await html2canvas(
+      document.querySelector('#pdf') as HTMLElement,
+    )
     const img = data.toDataURL('image/png')
     const imgProperties = pdf.getImageProperties(img)
     const pdfWidth = pdf.internal.pageSize.getWidth()
