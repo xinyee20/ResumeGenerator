@@ -3,5 +3,36 @@
   "header": {
     "title": "レジュメジェネレーター",
     "sample": "これはサンプルコンポーネントです"
+  },
+  "form": {
+    "title": "レジュメ作成フォーム",
+    "desc": "質問に答えて送信ボタンを押すと、レジュメが作成されます",
+    "inputs": {
+      "firstName": "あなたのお名前は？",
+      "lastName": "あなたの苗字は？",
+      "address": "あなたの住所は？",
+      "phoneNumber": "あなたの電話番号は？",
+      "email": "あなたのメールアドレスは？",
+      "summary": "あなたの強みを教えて下さい",
+      "skills": "あなたが持っているスキルを教えて下さい",
+      "workhistory": "以前勤めていた会社や業務内容を教えて下さい",
+      "education": "学歴をおしえてください"
+    },
+    "placeholder": {
+      "firstName": "例) 太郎",
+      "lastName": "例) 山田",
+      "address": "例) 東京都新宿区1-1",
+      "phoneNumber": "例) 08000000000",
+      "email": "例) sample@example.com",
+      "summary": "例) ReactとTypescriptがかけます！",
+      "skills": "例) Communication skill",
+      "workhistory": "例) Work History",
+      "education": "例) Education"
+    },
+    "button": {
+      "submit": "履歴書を生成する",
+      "add": "追加する",
+      "next": "次へ"
+    }
   }
 }
