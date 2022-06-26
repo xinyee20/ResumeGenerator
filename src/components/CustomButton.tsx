@@ -2,10 +2,10 @@ import { Button } from '@mui/material'
 import React, { FC, memo } from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-export interface ButtonProps {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string
-  type: 'primary' | 'secondary'
-  onClick?: () => void
+  designType: 'primary' | 'secondary'
 }
 
 const theme = createTheme({
@@ -17,19 +17,21 @@ const theme = createTheme({
   },
 })
 
-export const CustomButton: FC<ButtonProps> = memo(({ text, type, onClick }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Button
-        variant={type === 'primary' ? 'contained' : 'outlined'}
-        color={'primary'}
-        onClick={onClick}
-        disableElevation
-      >
-        {text}
-      </Button>
-    </ThemeProvider>
-  )
-})
+export const CustomButton: FC<ButtonProps> = memo(
+  ({ text, designType, onClick }) => {
+    return (
+      <ThemeProvider theme={theme}>
+        <Button
+          variant={designType === 'primary' ? 'contained' : 'outlined'}
+          color={'primary'}
+          onClick={onClick}
+          disableElevation
+        >
+          {text}
+        </Button>
+      </ThemeProvider>
+    )
+  },
+)
 
 CustomButton.displayName = 'CustomButton'
