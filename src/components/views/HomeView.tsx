@@ -31,28 +31,37 @@ export const HomeView: FC = memo(() => {
       >
         English
       </button>
-      <div className="card">
+
+      <div className="card" style={{ margin: '5em' }}>
         <div className="card-body">
           <h2 className="card-title">{t('header.title')}</h2>
           {/* <SmallComponent />
           <SmallComponent />
           <SmallComponent />
           <SmallComponent /> */}
-          <Link to="/form" style={{ textDecoration: 'none', margin: '20px' }}>
+          <div className="btn-group" role="group">
+            <Link to="/form" style={{ textDecoration: 'none', margin: '20px' }}>
+              <CustomButton
+                text={t('form.button.submit')}
+                designType="secondary"
+              ></CustomButton>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="card" style={{ margin: '5em' }}>
+        <div className="card-body">
+          <h2 className="card-title">{t('テーマを設定する')}</h2>
+          <div style={{ display: 'inline', margin: '20px' }}>
             <CustomButton
-              text={t('form.button.submit')}
-              designType="secondary"
+              text={'Open UnlockedModal'}
+              designType={'primary'}
+              onClick={(e) => {
+                // e.stopPropagation()
+                setUnlockedModalOpen(true)
+              }}
             ></CustomButton>
-          </Link>
-          <CustomButton
-            text={'Open UnlockedModal'}
-            designType={'primary'}
-            onClick={(e) => {
-              // e.stopPropagation()
-              setUnlockedModalOpen(true)
-            }}
-            style={{ margin: '20px' }}
-          ></CustomButton>
+          </div>
           <CustomButton
             text={'Open Locked Modal'}
             designType={'primary'}
@@ -60,7 +69,6 @@ export const HomeView: FC = memo(() => {
               // e.stopPropagation()
               setLockedModalOpen(true)
             }}
-            style={{ margin: '20px' }}
           ></CustomButton>
           <UnlockedModal
             modalOpen={unlockedModalOpen}
