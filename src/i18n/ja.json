@@ -26,8 +26,8 @@
       "email": "例) sample@example.com",
       "summary": "例) ReactとTypescriptがかけます！",
       "skills": "例) Communication skill",
-      "workhistory": "例) Work History",
-      "education": "例) Education"
+      "workhistory": "例) 英語の会社名とその会社でやったこと",
+      "education": "例) 英語の学校名と専攻"
     },
     "button": {
       "submit": "履歴書を生成する",

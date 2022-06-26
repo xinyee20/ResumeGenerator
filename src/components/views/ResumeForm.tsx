@@ -9,7 +9,7 @@ type IFormInput = {
   firstName: string
   lastName: string
   address: string
-  phoneNumber: number
+  phoneNumber: string
   email: string
   summary: string
 }
@@ -23,6 +23,10 @@ export const ResumeForm: FC = () => {
     formState: { errors },
   } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    Object.keys(data).map((key) => {
+      const value: string = data[key as keyof IFormInput] as string
+      sessionStorage.setItem(key, value)
+    })
     navigate('/form2', { replace: true })
   }
 
@@ -44,6 +48,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('firstName', { required: '名前は必須です' })}
+            value={sessionStorage.getItem('firstName')}
           />
           <ErrorMessage
             errors={errors}
@@ -64,6 +69,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('lastName', { required: '苗字は必須です' })}
+            value={sessionStorage.getItem('lastName')}
           />
           <ErrorMessage
             errors={errors}
@@ -84,6 +90,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('address', { required: '住所は必須です' })}
+            value={sessionStorage.getItem('address')}
           />
           <ErrorMessage
             errors={errors}
@@ -105,6 +112,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('phoneNumber', { required: '電話番号は必須です' })}
+            value={sessionStorage.getItem('phoneNumber')}
           />
           <ErrorMessage
             errors={errors}
@@ -126,6 +134,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('email', { required: 'メールアドレスは必須です' })}
+            value={sessionStorage.getItem('email')}
           />
           <ErrorMessage
             errors={errors}
