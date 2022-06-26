@@ -8,6 +8,7 @@ import { Education } from '@/types/Education'
 import { ReactElement } from 'react-markdown/lib/react-markdown'
 import { QuestionItem } from '../QuestionItem'
 import { useNavigate } from 'react-router-dom'
+import { QuestionItem2 } from '../QuestionItem2'
 interface Question {
   questionText: string
 }
@@ -16,7 +17,7 @@ export interface QuestionForm {
   questions: Question[]
 }
 
-export const ResumeForm2 = () => {
+export const ResumeForm3 = () => {
   const navigate = useNavigate()
   const { handleSubmit, register, control } = useForm<QuestionForm>({
     defaultValues: {
@@ -40,10 +41,10 @@ export const ResumeForm2 = () => {
   const doSubmit = (data: QuestionForm) => {
     const answers: string[] = []
     data.questions.map((d) => {
-      answers.push(d.questionText)
+      answers.push(d.questionText.replace(/\r?\n/g, '\\n'))
     })
-    sessionStorage.setItem('skills', answers.join(','))
-    navigate('/form3', { replace: true })
+    sessionStorage.setItem('workHistories', answers.join(','))
+    navigate('/form4', { replace: true })
   }
 
   return (
@@ -51,7 +52,7 @@ export const ResumeForm2 = () => {
       <Container maxWidth="sm" style={{ paddingBottom: 20 }}>
         <form onSubmit={handleSubmit(doSubmit)} className={'form-container'}>
           {fields.map((field, index) => (
-            <QuestionItem
+            <QuestionItem2
               key={field.id}
               register={register}
               questionIndex={index}
@@ -79,4 +80,4 @@ export const ResumeForm2 = () => {
   )
 }
 
-ResumeForm2.displayName = 'ResumeForm2'
+ResumeForm3.displayName = 'ResumeForm3'

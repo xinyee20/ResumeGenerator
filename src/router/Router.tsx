@@ -1,4 +1,7 @@
+import { Confirm } from '@/components/views/Confirm'
 import { ResumeForm2 } from '@/components/views/ResumeForm2'
+import { ResumeForm3 } from '@/components/views/ResumeForm3'
+import { ResumeForm4 } from '@/components/views/ResumeForm4'
 import React, { FC, memo } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { HomeView } from '../components/views/HomeView'
@@ -24,6 +27,18 @@ export const Router: FC = memo(() => {
         {
           path: '/form2',
           element: <ResumeForm2 />,
+        },
+        {
+          path: '/form3',
+          element: <ResumeForm3 />,
+        },
+        {
+          path: '/form4',
+          element: <ResumeForm4 />,
+        },
+        {
+          path: '/confirm',
+          element: <Confirm />,
         },
         {
           path: '/resume',

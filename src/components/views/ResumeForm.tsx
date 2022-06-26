@@ -48,6 +48,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('firstName', { required: '名前は必須です' })}
+            value={sessionStorage.getItem('firstName')}
           />
           <ErrorMessage
             errors={errors}
@@ -68,6 +69,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('lastName', { required: '苗字は必須です' })}
+            value={sessionStorage.getItem('lastName')}
           />
           <ErrorMessage
             errors={errors}
@@ -88,6 +90,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('address', { required: '住所は必須です' })}
+            value={sessionStorage.getItem('address')}
           />
           <ErrorMessage
             errors={errors}
@@ -109,6 +112,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('phoneNumber', { required: '電話番号は必須です' })}
+            value={sessionStorage.getItem('phoneNumber')}
           />
           <ErrorMessage
             errors={errors}
@@ -130,6 +134,7 @@ export const ResumeForm: FC = () => {
             variant="outlined"
             fullWidth
             {...register('email', { required: 'メールアドレスは必須です' })}
+            value={sessionStorage.getItem('email')}
           />
           <ErrorMessage
             errors={errors}
