@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { CustomButton } from '../CustomButton'
 import { TemplateOne } from '../TemplateOne'
+import html2canvas from 'html2canvas'
+import { jsPDF } from 'jspdf'
 
 export const ResumeView: FC = memo(() => {
   const { t } = useTranslation()
@@ -19,6 +21,17 @@ export const ResumeView: FC = memo(() => {
   const education = sessionStorage
     .getItem('education')
     ?.replace(/\r?\\n/g, '\n')
+
+  const createPDF = async () => {
+    const pdf = new jsPDF('portrait', 'pt', 'a4')
+    const data = await html2canvas(document.querySelector('#pdf'))
+    const img = data.toDataURL('image/png')
+    const imgProperties = pdf.getImageProperties(img)
+    const pdfWidth = pdf.internal.pageSize.getWidth()
+    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width
+    pdf.addImage(img, 'PNG', 0, 0, pdfWidth, pdfHeight)
+    pdf.save('resume.pdf')
+  }
 
   return (
     <div
@@ -37,19 +50,20 @@ export const ResumeView: FC = memo(() => {
         }}
       >
         <div>レジュメの作成に成功しました</div>
-        <div>{t('Press Command/Ctrl + "P" to download resume')}</div>
       </div>
-      <TemplateOne
-        firstName={firstName ?? 'firstName'}
-        lastName={lastName}
-        address={address ?? 'Address'}
-        phoneNumber={phoneNumber}
-        email={email ?? 'Email'}
-        summary={summary ?? 'Summary'}
-        skills={skills}
-        workHistories={workHistories}
-        education={education}
-      ></TemplateOne>
+      <div id="pdf">
+        <TemplateOne
+          firstName={firstName ?? 'firstName'}
+          lastName={lastName ?? 'lastName'}
+          address={address ?? 'Address'}
+          phoneNumber={phoneNumber ?? 'phone number'}
+          email={email ?? 'Email'}
+          summary={summary ?? 'Summary'}
+          skills={skills}
+          workHistories={workHistories}
+          education={education}
+        ></TemplateOne>
+      </div>
       <div
         style={{
           display: 'flex',
@@ -60,6 +74,7 @@ export const ResumeView: FC = memo(() => {
         <CustomButton
           text={'ダウンロード'}
           designType={'primary'}
+          onClick={createPDF}
         ></CustomButton>
         <Link to="/" style={{ textDecoration: 'none' }}>
           <CustomButton
