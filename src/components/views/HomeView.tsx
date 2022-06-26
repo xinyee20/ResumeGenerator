@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom'
 import { CustomButton } from '../CustomButton'
 import { UnlockedModal } from '../UnlockedModal'
 import { LockedModal } from '../LockedModal'
+import { Card } from '../Card'
 
 export const HomeView: FC = memo(() => {
   const { t } = useTranslation()
+  const [selectedTemplate, setSelectedTemplate] = useState('')
   const [unlockedModalOpen, setUnlockedModalOpen] = useState(false)
   const [lockedModalOpen, setLockedModalOpen] = useState(false)
 
@@ -18,6 +20,16 @@ export const HomeView: FC = memo(() => {
 
   return (
     <>
+      <UnlockedModal
+        modalOpen={unlockedModalOpen}
+        templateURL={selectedTemplate}
+        setModalOpen={setUnlockedModalOpen}
+      ></UnlockedModal>
+      <LockedModal
+        modalOpen={lockedModalOpen}
+        templateURL={selectedTemplate}
+        setModalOpen={setLockedModalOpen}
+      ></LockedModal>
       <div style={{ margin: '0 5em' }}>
         <button
           className="btn btn-sm btn-primary"
@@ -33,14 +45,47 @@ export const HomeView: FC = memo(() => {
           English
         </button>
       </div>
+      {/*Header */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: '30px',
+        }}
+      >
+        <h1>トランス・レジュメ</h1>
+        <h4>
+          英文履歴書が必要だけど、どう書けばいいかわからない？ぜひお試しください。
+        </h4>
+      </div>
 
-      <div className="card" style={{ margin: '2em 5em' }}>
+      <div
+        style={{
+          display: 'flex',
+          padding: '30px',
+          gap: '20px',
+        }}
+      >
+        <Card
+          template="../../../assets/Resume1.webp"
+          onClick={() => {
+            setUnlockedModalOpen(true)
+            setSelectedTemplate('../../../assets/Resume1.webp')
+          }}
+        ></Card>
+        <Card
+          template="../../../assets/template.png"
+          onClick={() => {
+            setLockedModalOpen(true)
+            setSelectedTemplate('../../../assets/template.png')
+          }}
+        ></Card>
+      </div>
+
+      {/* <div className="card" style={{ margin: '2em 5em' }}>
         <div className="card-body">
           <h2 className="card-title">{t('header.title')}</h2>
-          {/* <SmallComponent />
-          <SmallComponent />
-          <SmallComponent />
-          <SmallComponent /> */}
           <div className="btn-group" role="group">
             <Link to="/form" style={{ textDecoration: 'none', margin: '20px' }}>
               <CustomButton
@@ -54,38 +99,9 @@ export const HomeView: FC = memo(() => {
         <div className="card" style={{ margin: '5em' }}>
           <div className="card-body">
             <h2 className="card-title">{t('テーマを設定する')}</h2>
-            <div style={{ display: 'inline', margin: '20px' }}>
-              <CustomButton
-                text={'Open UnlockedModal'}
-                designType={'primary'}
-                onClick={(e) => {
-                  // e.stopPropagation()
-                  setUnlockedModalOpen(true)
-                }}
-              ></CustomButton>
-            </div>
-            <CustomButton
-              text={'Open Locked Modal'}
-              designType={'primary'}
-              onClick={(e) => {
-                // e.stopPropagation()
-                setLockedModalOpen(true)
-              }}
-            ></CustomButton>
-            <UnlockedModal
-              modalOpen={unlockedModalOpen}
-              templateURL="../../assets/Resume1.webp"
-              setModalOpen={setUnlockedModalOpen}
-              onNext={() => setUnlockedModalOpen(false)}
-            ></UnlockedModal>
-            <LockedModal
-              modalOpen={lockedModalOpen}
-              templateURL="../../assets/template.png"
-              setModalOpen={setLockedModalOpen}
-            ></LockedModal>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 })

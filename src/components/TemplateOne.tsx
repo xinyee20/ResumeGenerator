@@ -5,30 +5,43 @@ export interface TemplateOneProps {
   firstName: string
   lastName: string
   address: string
-  phoneNumber: string
+  contact: string
   email: string
   summary: string
-  skills: string
-  workHistories: string
-  education: string
+  skill: string
+  companyName: string //history
+  term: string
+  workHis: string
+  role: string
+  schoolName: string //education
+  major: string
+  schLocation: string
 }
 export const TemplateOne: FC<TemplateOneProps> = memo(
   ({
     themeColor,
-    firstName,
-    lastName,
+    name,
     address,
-    phoneNumber,
+    contact,
     email,
     summary,
-    skills,
-    workHistories,
-    education,
+    skill,
+    companyName, //history
+    term,
+    workLocation,
+    role,
+    schoolName, //education
+    major,
+    schLocation,
   }) => {
     return (
       <div
         style={{
-          // border: '1px solid black',
+          display: 'flex',
+          alignItems: 'center',
+          height: '50px',
+          backgroundColor: '#000',
+          color: '#fff',
           flexDirection: 'column',
         }}
       >
@@ -37,71 +50,60 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
           style={{
             display: 'flex',
             alignItems: 'center',
-            width: '100%',
+            height: '50px',
+            backgroundColor: '#000',
             color: '#fff',
-            backgroundColor: `${themeColor}` ?? '#fff',
             flexDirection: 'column',
           }}
         >
-          <div style={{ padding: '30px 0' }}>
-            {firstName} {lastName}
-          </div>
-          <div style={{ paddingBottom: '10px' }}>
-            {address} - {phoneNumber} - {email}
+          <div>{name}</div>
+          <div>
+            {address} {contact} {email}
           </div>
         </div>
         {/*Summary*/}
-        <div
-          style={{
-            padding: '10px 30px',
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <div style={{ fontWeight: '600', width: '40%' }}>
-            Professional Summary
-          </div>
-          <div style={{ width: '60%' }}>{summary}</div>
+        <div>
+          <div>Professional Summary</div>
+          <div>{summary}</div>
         </div>
         {/*Border */}
-        <div style={{ border: `1px ${themeColor} solid`, width: '100%' }}></div>
+        <div></div>
         {/*Skills*/}
-        <div
-          style={{
-            padding: '10px 30px',
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <div style={{ fontWeight: '600', width: '40%' }}>Skills</div>
-          <div style={{ width: '60%' }}>{skills}</div>
+        <div>
+          <div>Skills</div>
+          <div>
+            <div>{skill}</div>
+          </div>
         </div>
         {/*Border */}
-        <div style={{ border: `1px ${themeColor} solid`, width: '100%' }}></div>
+        <div></div>
         {/*History */}
-        <div
-          style={{
-            padding: '10px 30px',
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <div style={{ fontWeight: '600', width: '40%' }}>Work Histories</div>
-          <div style={{ width: '60%' }}>{workHistories}</div>
+        <div>
+          <div>Work History</div>
+          <div>
+            <div>
+              <div>
+                {role} {term}
+              </div>
+              <div>
+                {companyName} {workLocation}
+              </div>
+            </div>
+          </div>
         </div>
         {/*Border */}
-        <div style={{ border: `1px ${themeColor} solid`, width: '100%' }}></div>
+        <div></div>
         {/*Education*/}
-        <div
-          style={{
-            padding: '10px 30px',
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <div style={{ fontWeight: '600', width: '40%' }}>Education</div>
-          <div style={{ width: '60%' }}>{education}</div>
+        <div>Education</div>
+        <div>
+          <div>
+            <div>{major}</div>
+            <div>
+              {schoolName} - {schLocation}
+            </div>
+          </div>
         </div>
+        <div></div>
       </div>
     )
   },
