@@ -6,6 +6,7 @@ import { TextField, Button, Container } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { TemplateOne } from '../TemplateOne'
 import { ResumeView } from './ResumeView'
+import axios from 'axios'
 
 type IFormInput = {
   firstName: string
@@ -39,9 +40,33 @@ export const Confirm: FC = () => {
     .getItem('education')
     ?.replace(/\r?\\n/g, '\n') as string
 
-  const translate = () => {
+  const translate = async () => {
     setIsLoading(true)
-    // Call translate API
+
+    const translateNeeded = {
+      firstName: firstName,
+      lastName: lastName,
+      address: address,
+      summary: summary,
+      skills: skills,
+      workHistories: workHistories
+    }
+
+    for (const [key, value] of Object.entries(translateNeeded)) {
+      await axios.get(
+      'https://api-free.deepl.com/v2/translate',
+        {
+            params: {
+                text: value,
+                source_lang: 'JA',
+                target_lang: 'EN-US',
+                auth_key: '70edb5ea-43c4-038d-1f07-781d34ec7c24:fx'
+            }
+        }).then(function(data) {
+          console.log(data)
+          sessionStorage.setItem(key, data.data.translations[0].text)
+        })
+    }
     setIsLoading(false)
     navigate('/resume', { replace: true })
   }
