@@ -3,5 +3,36 @@
   "header": {
     "title": "resume generator",
     "sample": "This is a sample component"
+  },
+  "form": {
+    "title": "Resume Form",
+    "desc": "Answer the questions and click the submit button to create your resume",
+    "inputs": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "address": "Address",
+      "phoneNumber": "Phone Number",
+      "email": "Email Address",
+      "summary": "Professional Summary",
+      "skills": "Skills",
+      "workhistory": "Work Histories",
+      "education": "Educations"
+    },
+    "placeholder": {
+      "firstName": "ex. 太郎",
+      "lastName": "ex. 山田",
+      "address": "ex. 東京都新宿区1-1",
+      "phoneNumber": "ex. 08000000000",
+      "email": "ex. sample@example.com",
+      "summary": "ex. ReactとTypescriptがかけます！",
+      "skills": "ex. Communication skill",
+      "workhistory": "ex. Work History",
+      "education": "ex. Education"
+    },
+    "button": {
+      "submit": "Generate a resume",
+      "add": "Add",
+      "next": "Next"
+    }
   }
 }

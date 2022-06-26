@@ -1,3 +1,4 @@
+import { ResumeForm2 } from '@/components/views/ResumeForm2'
 import React, { FC, memo } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { HomeView } from '../components/views/HomeView'
@@ -19,6 +20,10 @@ export const Router: FC = memo(() => {
         {
           path: '/form',
           element: <ResumeForm />,
+        },
+        {
+          path: '/form2',
+          element: <ResumeForm2 />,
         },
         {
           path: '/resume',

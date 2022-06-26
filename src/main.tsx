@@ -5,7 +5,14 @@ import './index.css'
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import './i18n/configs'
 
-const theme = createTheme()
+const theme = createTheme({
+  spacing: 4,
+  palette: {
+    primary: {
+      main: '#007bff',
+    },
+  },
+})
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
