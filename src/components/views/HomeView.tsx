@@ -30,7 +30,7 @@ export const HomeView: FC = memo(() => {
         templateURL={selectedTemplate}
         setModalOpen={setLockedModalOpen}
       ></LockedModal>
-      <div style={{ margin: '0 5em' }}>
+      {/* <div style={{ margin: '0 5em' }}>
         <button
           className="btn btn-sm btn-primary"
           onClick={() => switchLang('ja')}
@@ -44,7 +44,7 @@ export const HomeView: FC = memo(() => {
         >
           English
         </button>
-      </div>
+      </div> */}
       {/*Header */}
       <div
         style={{
@@ -52,6 +52,7 @@ export const HomeView: FC = memo(() => {
           flexDirection: 'column',
           alignItems: 'center',
           padding: '30px',
+          paddingTop: '80px',
         }}
       >
         <h1>トランス・レジュメ</h1>

@@ -1,5 +1,4 @@
 import React, { FC, memo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { CustomButton } from '../CustomButton'
 import { TemplateOne } from '../TemplateOne'
@@ -7,7 +6,6 @@ import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 
 export const ResumeView: FC = memo(() => {
-  const { t } = useTranslation()
   const themeColor = sessionStorage.getItem('color')
   const firstName = sessionStorage.getItem('firstName')
   const lastName = sessionStorage.getItem('lastName')
