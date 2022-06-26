@@ -43,6 +43,7 @@ export const Confirm: FC = () => {
     setIsLoading(true)
     // Call translate API
     setIsTranslated(true)
+    setIsLoading(false)
   }
 
   return (
@@ -54,17 +55,19 @@ export const Confirm: FC = () => {
         </>
       ) : isTranslated ? (
         <>
-          <TemplateOne
-            firstName={firstName}
-            lastName={lastName}
-            address={address}
-            phoneNumber={phoneNumber}
-            email={email}
-            summary={summary}
-            skills={skills}
-            workHistories={workHistories}
-            education={education}
-          ></TemplateOne>
+          <div style={{ height: 10000 }}>
+            <TemplateOne
+              firstName={firstName}
+              lastName={lastName}
+              address={address}
+              phoneNumber={phoneNumber}
+              email={email}
+              summary={summary}
+              skills={skills}
+              workHistories={workHistories}
+              education={education}
+            ></TemplateOne>
+          </div>
         </>
       ) : (
         <>

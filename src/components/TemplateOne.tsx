@@ -3,37 +3,27 @@ import { WorkHistory } from '@/types/WorkHistroy'
 import React, { FC, memo } from 'react'
 
 export interface TemplateOneProps {
-  themeColor: string
-  name: string
+  firstName: string
+  lastName: string
   address: string
-  contact: string
+  phoneNumber: string
   email: string
   summary: string
-  skill: string
-  companyName: string //history
-  term: string
-  workLocation: string
-  role: string
-  schoolName: string //education
-  major: string
-  schLocation: string
+  skills: string
+  workHistories: string
+  education: string
 }
 export const TemplateOne: FC<TemplateOneProps> = memo(
   ({
-    themeColor,
-    name,
+    firstName,
+    lastName,
     address,
-    contact,
+    phoneNumber,
     email,
     summary,
-    skill,
-    companyName, //history
-    term,
-    workLocation,
-    role,
-    schoolName, //education
-    major,
-    schLocation,
+    skills,
+    workHistories,
+    education,
   }) => {
     return (
       <div
@@ -53,13 +43,15 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
             alignItems: 'center',
             height: '50px',
             backgroundColor: '#000',
-            color: '#fff',
+            color: '#333',
             flexDirection: 'column',
           }}
         >
-          <div>{name}</div>
           <div>
-            {address} {contact} {email}
+            {firstName} {lastName}
+          </div>
+          <div>
+            {address} {phoneNumber} {email}
           </div>
         </div>
         {/*Summary*/}
@@ -73,7 +65,7 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
         <div>
           <div>Skills</div>
           <div>
-            <div>{skill}</div>
+            <div>{skills}</div>
           </div>
         </div>
         {/*Border */}
@@ -83,12 +75,7 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
           <div>Work History</div>
           <div>
             <div>
-              <div>
-                {role} {term}
-              </div>
-              <div>
-                {companyName} {workLocation}
-              </div>
+              <div>{workHistories}</div>
             </div>
           </div>
         </div>
@@ -97,12 +84,7 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
         {/*Education*/}
         <div>Education</div>
         <div>
-          <div>
-            <div>{major}</div>
-            <div>
-              {schoolName} - {schLocation}
-            </div>
-          </div>
+          <div>{education}</div>
         </div>
         <div></div>
       </div>
