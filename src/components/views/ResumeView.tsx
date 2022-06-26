@@ -57,10 +57,10 @@ export const ResumeView: FC = memo(() => {
       <div id="pdf">
         <TemplateOne
           themeColor={themeColor ?? '#000'}
-          firstName={firstName ?? 'firstName'}
-          lastName={lastName ?? 'lastName'}
+          firstName={firstName ?? 'FirstName'}
+          lastName={lastName ?? 'LastName'}
           address={address ?? 'Address'}
-          phoneNumber={phoneNumber ?? 'phone number'}
+          phoneNumber={phoneNumber ?? 'Phone number'}
           email={email ?? 'Email'}
           summary={summary ?? 'Summary'}
           skills={skills ?? 'Skills'}

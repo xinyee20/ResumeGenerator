@@ -30,7 +30,6 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
         style={{
           display: 'flex',
           alignItems: 'center',
-          height: '50px',
           backgroundColor: `${themeColor}`,
           color: '#fff',
           flexDirection: 'column',
@@ -43,7 +42,6 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
             alignItems: 'center',
             height: '50px',
             backgroundColor: '#000',
-            color: '#333',
             flexDirection: 'column',
           }}
         >
