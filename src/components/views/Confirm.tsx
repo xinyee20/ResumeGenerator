@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { TextField, Button, Container } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { TemplateOne } from '../TemplateOne'
 
 type IFormInput = {
   firstName: string
@@ -22,30 +23,49 @@ export const Confirm: FC = () => {
   const navigate = useNavigate()
 
   const [isLoading, setIsLoading] = useState(false)
+  const [isTranslated, setIsTranslated] = useState(false)
 
-  const firstName = sessionStorage.getItem('firstName')
-  const lastName = sessionStorage.getItem('lastName')
-  const address = sessionStorage.getItem('address')
-  const phoneNumber = sessionStorage.getItem('phoneNumber')
-  const email = sessionStorage.getItem('email')
-  const summary = sessionStorage.getItem('summary')
-  const skills = sessionStorage.getItem('skills')
+  const firstName = sessionStorage.getItem('firstName') as string
+  const lastName = sessionStorage.getItem('lastName') as string
+  const address = sessionStorage.getItem('address') as string
+  const phoneNumber = sessionStorage.getItem('phoneNumber') as string
+  const email = sessionStorage.getItem('email') as string
+  const summary = sessionStorage.getItem('summary') as string
+  const skills = sessionStorage.getItem('skills') as string
   const workHistories = sessionStorage
     .getItem('workHistories')
-    ?.replace(/\r?\\n/g, '\n')
+    ?.replace(/\r?\\n/g, '\n') as string
   const education = sessionStorage
     .getItem('education')
-    ?.replace(/\r?\\n/g, '\n')
+    ?.replace(/\r?\\n/g, '\n') as string
 
   const translate = () => {
     setIsLoading(true)
     // Call translate API
+    setIsTranslated(true)
   }
 
   return (
     <>
       {isLoading ? (
-        <p>Loading</p>
+        <>
+          <div className="loader">Loading...</div>
+          <p style={{ textAlign: 'center' }}>履歴書生成中...</p>
+        </>
+      ) : isTranslated ? (
+        <>
+          <TemplateOne
+            firstName={firstName}
+            lastName={lastName}
+            address={address}
+            phoneNumber={phoneNumber}
+            email={email}
+            summary={summary}
+            skills={skills}
+            workHistories={workHistories}
+            education={education}
+          ></TemplateOne>
+        </>
       ) : (
         <>
           <Container maxWidth="sm" style={{ paddingBottom: 30 }}>
