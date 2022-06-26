@@ -1,6 +1,5 @@
 import { Education } from '@/types/Education'
 import { WorkHistory } from '@/types/WorkHistroy'
-import { Email } from '@mui/icons-material'
 import React, { FC, memo } from 'react'
 
 export interface TemplateOneProps {
@@ -9,9 +8,15 @@ export interface TemplateOneProps {
   address: string
   contact: string
   email: string
-  skills: string[]
-  history: WorkHistory[]
-  education: Education[]
+  summary: string
+  skill: string
+  companyName: string //history
+  term: string
+  workLocation: string
+  role: string
+  schoolName: string //education
+  major: string
+  schLocation: string
 }
 export const TemplateOne: FC<TemplateOneProps> = memo(
   ({
@@ -20,9 +25,15 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
     address,
     contact,
     email,
-    skills,
-    history,
-    education,
+    summary,
+    skill,
+    companyName, //history
+    term,
+    workLocation,
+    role,
+    schoolName, //education
+    major,
+    schLocation,
   }) => {
     return (
       <div
@@ -54,7 +65,7 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
         {/*Summary*/}
         <div>
           <div>Professional Summary</div>
-          <div>{'summary'}</div>
+          <div>{summary}</div>
         </div>
         {/*Border */}
         <div></div>
@@ -62,9 +73,7 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
         <div>
           <div>Skills</div>
           <div>
-            {skills.map((skill) => {
-              return <div key={`${skill}`}>{skill}</div>
-            })}
+            <div>{skill}</div>
           </div>
         </div>
         {/*Border */}
@@ -73,18 +82,14 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
         <div>
           <div>Work History</div>
           <div>
-            {history.map((history: WorkHistory) => {
-              return (
-                <div key={`${history}`}>
-                  <div>
-                    {history.role} {history.term}
-                  </div>
-                  <div>
-                    {history.companyName} {history.location}
-                  </div>
-                </div>
-              )
-            })}
+            <div>
+              <div>
+                {role} {term}
+              </div>
+              <div>
+                {companyName} {workLocation}
+              </div>
+            </div>
           </div>
         </div>
         {/*Border */}
@@ -92,16 +97,12 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
         {/*Education*/}
         <div>Education</div>
         <div>
-          {education.map((education: Education) => {
-            return (
-              <div key={`${education}`}>
-                <div>{education.major}</div>
-                <div>
-                  {education.schoolName} - {education.location}
-                </div>
-              </div>
-            )
-          })}
+          <div>
+            <div>{major}</div>
+            <div>
+              {schoolName} - {schLocation}
+            </div>
+          </div>
         </div>
         <div></div>
       </div>
