@@ -1,8 +1,7 @@
-import { Education } from '@/types/Education'
-import { WorkHistory } from '@/types/WorkHistroy'
 import React, { FC, memo } from 'react'
 
 export interface TemplateOneProps {
+  themeColor: string
   firstName: string
   lastName: string
   address: string
@@ -15,6 +14,7 @@ export interface TemplateOneProps {
 }
 export const TemplateOne: FC<TemplateOneProps> = memo(
   ({
+    themeColor,
     firstName,
     lastName,
     address,
@@ -31,7 +31,7 @@ export const TemplateOne: FC<TemplateOneProps> = memo(
           display: 'flex',
           alignItems: 'center',
           height: '50px',
-          backgroundColor: '#000',
+          backgroundColor: `${themeColor}`,
           color: '#fff',
           flexDirection: 'column',
         }}

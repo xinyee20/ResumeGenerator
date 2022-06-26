@@ -7,11 +7,10 @@ export interface UnlockedModalProps {
   templateURL: string
   modalOpen: boolean
   setModalOpen: (boo: boolean) => void
-  onNext: () => void
 }
 
 export const UnlockedModal: FC<UnlockedModalProps> = memo(
-  ({ templateURL, modalOpen, setModalOpen, onNext }) => {
+  ({ templateURL, modalOpen, setModalOpen }) => {
     const [selectedColor, setSelectedColor] = useState('#484848')
 
     return (
@@ -182,7 +181,9 @@ export const UnlockedModal: FC<UnlockedModalProps> = memo(
                 <CustomButton
                   text="次"
                   designType="primary"
-                  onClick={onNext}
+                  onClick={() => {
+                    sessionStorage.setItem('color', selectedColor)
+                  }}
                 ></CustomButton>
               </div>
             </div>

@@ -8,6 +8,7 @@ import { jsPDF } from 'jspdf'
 
 export const ResumeView: FC = memo(() => {
   const { t } = useTranslation()
+  const themeColor = sessionStorage.getItem('color')
   const firstName = sessionStorage.getItem('firstName')
   const lastName = sessionStorage.getItem('lastName')
   const address = sessionStorage.getItem('address')
@@ -53,15 +54,16 @@ export const ResumeView: FC = memo(() => {
       </div>
       <div id="pdf">
         <TemplateOne
+          themeColor={themeColor ?? '#000'}
           firstName={firstName ?? 'firstName'}
           lastName={lastName ?? 'lastName'}
           address={address ?? 'Address'}
           phoneNumber={phoneNumber ?? 'phone number'}
           email={email ?? 'Email'}
           summary={summary ?? 'Summary'}
-          skills={skills}
-          workHistories={workHistories}
-          education={education}
+          skills={skills ?? 'Skills'}
+          workHistories={workHistories ?? 'Work Histories'}
+          education={education ?? 'Education'}
         ></TemplateOne>
       </div>
       <div
@@ -76,7 +78,11 @@ export const ResumeView: FC = memo(() => {
           designType={'primary'}
           onClick={createPDF}
         ></CustomButton>
-        <Link to="/" style={{ textDecoration: 'none' }}>
+        <Link
+          to="/"
+          style={{ textDecoration: 'none' }}
+          onClick={() => sessionStorage.clear()}
+        >
           <CustomButton
             text={'ホームページ'}
             designType={'primary'}
